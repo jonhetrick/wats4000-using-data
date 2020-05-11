@@ -1,17 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Rhymesaurus from '@/views/Rhymesaurus'
-// TODO: Import new component
+import Rhymesaurus from '@/views/rhymesaurus.vue'
+import Soundmachine from '@/views/soundmachine.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
-    name: 'Rhymesaurus',
+    path: '/rhymesaurus',
+    name: 'rhymesaurus',
     component: Rhymesaurus
+  },
+  {
+    path: '/soundmachine',
+    name: 'soundmachine',
+    component: Soundmachine
   }
-  // TODO: Add new route definition here
 ]
 
 const router = new VueRouter({

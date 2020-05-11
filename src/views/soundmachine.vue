@@ -1,9 +1,8 @@
 <template>
-  <div class="rhymesaurus">
+  <div class="soundmachine">
     <form v-on:submit.prevent="findWords" v-on:reset.prevent="resetWords">
       <p>
-        Find rhymes for <input type="text" v-model="rhyme" /> related to
-        <input type="text" v-model="phrase" />
+        Find words that sound like <input type="text" v-model="phrase" />
         <button type="submit">Search</button> <button type="reset">Reset</button>
       </p>
     </form >
@@ -33,13 +32,12 @@
 import axios from "axios";
 
 export default {
-  name: "Rhymesaurus",
+  name: "Soundmachine",
   data() {
     return {
       results: null,
       errors: [],
       phrase: "",
-      rhyme: "",
     };
   },
   methods: {
@@ -47,8 +45,7 @@ export default {
       axios
         .get("https://api.datamuse.com/words", {
           params: {
-            ml: this.phrase,
-            rel_rhy: this.rhyme,
+            sl: this.phrase
           },
         })
         .then((response) => {
@@ -58,10 +55,9 @@ export default {
           this.errors.push(error);
         });
     },
-    resetWords: function(){
+    resetWords: function() {
       this.results = null,
-      this.phrase = "",
-      this.rhyme = ""
+      this.phrase = ""
     }
   },
 };
@@ -69,7 +65,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rhymesaurus {
+.soundmachine {
   font-size: 1.4rem;
 }
 input[type="text"] {
